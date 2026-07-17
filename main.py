@@ -2,14 +2,14 @@ import typer
 from pathlib import Path
 from typing import Annotated
 
-from dfm.cmd.pull import pull
-from dfm.cmd.push import push
+from dfm.pull import pull
+from dfm.push import push
 
 app = typer.Typer()
 
 
 @app.command("pull")
-def cli_pull(
+def cli_rpull(
     src_path: Annotated[Path, typer.Argument()],
     tgt_path: Annotated[Path, typer.Argument()] = Path.cwd(),
     overwrite: Annotated[bool, typer.Option()] = False,
@@ -18,7 +18,7 @@ def cli_pull(
 
 
 @app.command("push")
-def cli_push(
+def cli_rpush(
     src_path: Annotated[Path, typer.Argument()],
     tgt_path: Annotated[Path, typer.Argument()] = Path.home(),
     overwrite: Annotated[bool, typer.Option()] = False,
