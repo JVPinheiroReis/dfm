@@ -20,10 +20,10 @@ def cli_rpull(
 @app.command("push")
 def cli_rpush(
     src_path: Annotated[Path, typer.Argument()],
-    tgt_path: Annotated[Path, typer.Argument()] = Path.home(),
+    root_path: Annotated[Path, typer.Argument()] = Path.home(),
     overwrite: Annotated[bool, typer.Option()] = False,
 ):
-    push(src_path, tgt_path, overwrite)
+    push(src_path, root_path, overwrite)
 
 
 if __name__ == "__main__":
