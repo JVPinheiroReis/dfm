@@ -2,6 +2,7 @@ from pathlib import Path
 
 
 def pull(src: Path, tgt: Path, owr: bool):
-    print(src)
-    print(tgt)
-    print(owr)
+
+    src.move_into(tgt)
+
+    src.symlink_to(tgt / src.name)
