@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from dfm.rm import rm
@@ -15,4 +16,4 @@ def pull(src: Path, root: Path, owr: bool):
     tgt.parent.mkdir(parents=True, exist_ok=True)
 
     src.move(tgt.resolve())
-    src.symlink_to(tgt.resolve())
+    src.symlink_to(os.path.relpath(tgt, start=src.parent))

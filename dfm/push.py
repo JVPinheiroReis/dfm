@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from dfm.rm import rm
@@ -14,4 +15,4 @@ def push(src: Path, root: Path, owr: bool):
 
     tgt.parent.mkdir(parents=True, exist_ok=True)
 
-    tgt.symlink_to(src.resolve())
+    tgt.symlink_to(os.path.relpath(src, start=tgt.parent))
